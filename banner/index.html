@@ -24,15 +24,18 @@ html,body{width:100%;height:100%;overflow:hidden;background:#010810;touch-action
   color:#fff;letter-spacing:.12em;text-transform:uppercase;text-align:center;}
 .rotate-sub{font-family:'Barlow Condensed',sans-serif;font-size:18px;
   color:#7ab0d8;letter-spacing:.2em;text-transform:uppercase;text-align:center;}
-.back-btn{position:fixed;top:14px;left:14px;z-index:998;
-  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:15px;
-  color:rgba(255,255,255,.45);letter-spacing:.12em;text-decoration:none;
-  text-transform:uppercase;padding:6px 12px;border-radius:4px;
-  border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.3);
+.screen-controls{position:fixed;top:14px;left:14px;z-index:998;
+  display:flex;align-items:center;gap:8px;
   opacity:0;pointer-events:none;transform:translateY(-8px);
   transition:opacity .18s ease,transform .18s ease;}
-body.controls-visible .back-btn{opacity:1;pointer-events:auto;transform:translateY(0);}
-.back-btn:hover{opacity:.75;}
+body.controls-visible .screen-controls{opacity:1;pointer-events:auto;transform:translateY(0);}
+.control-btn{
+  font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:15px;
+  color:rgba(255,255,255,.55);letter-spacing:.12em;text-decoration:none;
+  text-transform:uppercase;padding:6px 12px;border-radius:4px;
+  border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.3);
+  cursor:pointer;line-height:1.2;}
+.control-btn:hover{background:rgba(255,255,255,.08);color:rgba(255,255,255,.78);}
 
 /* ── BANNER STAGE (fullscreen) ── */
 .stage{
@@ -163,8 +166,11 @@ body.controls-visible .back-btn{opacity:1;pointer-events:auto;transform:translat
   <div class="rotate-sub">Para visualizar o banner<br>gire para horizontal</div>
 </div>
 
-<!-- Botão voltar -->
-<a class="back-btn" href="../">← Voltar</a>
+<!-- Controles temporários -->
+<div class="screen-controls">
+  <a class="control-btn back-btn" href="../">← Voltar</a>
+  <button class="control-btn fullscreen-btn" type="button">Tela cheia</button>
+</div>
 
 <!-- Banner fullscreen -->
 <div class="stage">
@@ -356,6 +362,12 @@ if(window.PointerEvent)el.addEventListener('pointerup',activateBanner);
 bindActivation(document.querySelector('.rotate-overlay'));
 bindActivation(document.querySelector('.stage'));
 document.querySelector('.back-btn').addEventListener('click',function(e){e.stopPropagation();});
+document.querySelector('.fullscreen-btn').addEventListener('click',function(e){
+e.preventDefault();
+e.stopPropagation();
+showBackButton();
+enterBannerFullscreen();
+});
 window.addEventListener('orientationchange',function(){setTimeout(fit,250);});
 document.addEventListener('fullscreenchange',fit);
 document.addEventListener('webkitfullscreenchange',fit);
