@@ -29,28 +29,30 @@ html,body{width:100%;height:100%;overflow:hidden;background:#010810;touch-action
   color:rgba(255,255,255,.45);letter-spacing:.12em;text-decoration:none;
   text-transform:uppercase;padding:6px 12px;border-radius:4px;
   border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.3);
-  transition:opacity .2s;}
-.back-btn:hover{opacity:.7;}
+  opacity:0;pointer-events:none;transform:translateY(-8px);
+  transition:opacity .18s ease,transform .18s ease;}
+body.controls-visible .back-btn{opacity:1;pointer-events:auto;transform:translateY(0);}
+.back-btn:hover{opacity:.75;}
 
 /* ── BANNER STAGE (fullscreen) ── */
 .stage{
-  width:100vw;height:100vh;
+  width:100vw;height:100vh;height:100dvh;
   display:flex;align-items:center;justify-content:center;
   overflow:hidden;}
 @media (orientation:portrait){.stage{display:none;}}
 .scaler{position:relative;overflow:hidden;border-radius:0;}
-.bw{transform-origin:top left;width:1920px;height:720px;}
+.bw{transform-origin:top left;width:1920px;height:820px;}
 
 /* ── BANNER CONTENT ── */
-.banner{width:1920px;height:720px;position:relative;overflow:hidden;background:#010810;
-  display:grid;grid-template-columns:260px 1fr 310px;grid-template-rows:1fr 220px;}
+.banner{width:1920px;height:820px;position:relative;overflow:hidden;background:#010810;
+  display:grid;grid-template-columns:260px 1fr 310px;grid-template-rows:1fr 300px;}
 .bg-base{position:absolute;inset:0;
   background:radial-gradient(ellipse 70% 110% at 50% -10%,#1848ae 0%,#07215a 28%,#020d2a 56%,#010810 100%);}
 .bg-sides{position:absolute;inset:0;
   background:linear-gradient(90deg,#010810 0%,transparent 14%,transparent 86%,#010810 100%);}
-.bg-top{position:absolute;left:0;right:0;top:0;height:360px;
+.bg-top{position:absolute;left:0;right:0;top:0;height:400px;
   background:radial-gradient(ellipse 800px 280px at 50% 0%,rgba(255,255,255,.08) 0%,transparent 65%);}
-.bg-floor{position:absolute;bottom:0;left:0;right:0;height:280px;
+.bg-floor{position:absolute;bottom:0;left:0;right:0;height:360px;
   background:linear-gradient(180deg,transparent 0%,rgba(1,8,20,.65) 100%);}
 .bg-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;}
 .gold-strip{position:absolute;bottom:0;left:0;right:0;height:16px;
@@ -173,20 +175,20 @@ html,body{width:100%;height:100%;overflow:hidden;background:#010810;touch-action
         <div class="bg-sides"></div>
         <div class="bg-top"></div>
         <div class="bg-floor"></div>
-        <svg class="bg-svg" viewBox="0 0 1920 720" preserveAspectRatio="none" aria-hidden="true">
+        <svg class="bg-svg" viewBox="0 0 1920 820" preserveAspectRatio="none" aria-hidden="true">
           <defs>
             <linearGradient id="bH" x1="0" x2="1"><stop offset="0" stop-color="#4ab5f5" stop-opacity="0"/><stop offset=".5" stop-color="#4ab5f5" stop-opacity=".45"/><stop offset="1" stop-color="#4ab5f5" stop-opacity="0"/></linearGradient>
             <linearGradient id="gH" x1="0" x2="1"><stop offset="0" stop-color="#f5c842" stop-opacity="0"/><stop offset=".5" stop-color="#f5c842" stop-opacity=".3"/><stop offset="1" stop-color="#f5c842" stop-opacity="0"/></linearGradient>
           </defs>
           <g opacity=".22">
-            <line x1="0" y1="720" x2="960" y2="-120" stroke="#2a72c8" stroke-width="1.6"/>
-            <line x1="200" y1="720" x2="960" y2="-120" stroke="#2a72c8" stroke-width="1.0"/>
-            <line x1="430" y1="720" x2="960" y2="-120" stroke="#2a72c8" stroke-width=".65"/>
-            <line x1="670" y1="720" x2="960" y2="-120" stroke="#2a72c8" stroke-width=".4"/>
-            <line x1="1920" y1="720" x2="960" y2="-120" stroke="#2a72c8" stroke-width="1.6"/>
-            <line x1="1720" y1="720" x2="960" y2="-120" stroke="#2a72c8" stroke-width="1.0"/>
-            <line x1="1490" y1="720" x2="960" y2="-120" stroke="#2a72c8" stroke-width=".65"/>
-            <line x1="1250" y1="720" x2="960" y2="-120" stroke="#2a72c8" stroke-width=".4"/>
+            <line x1="0" y1="820" x2="960" y2="-120" stroke="#2a72c8" stroke-width="1.6"/>
+            <line x1="200" y1="820" x2="960" y2="-120" stroke="#2a72c8" stroke-width="1.0"/>
+            <line x1="430" y1="820" x2="960" y2="-120" stroke="#2a72c8" stroke-width=".65"/>
+            <line x1="670" y1="820" x2="960" y2="-120" stroke="#2a72c8" stroke-width=".4"/>
+            <line x1="1920" y1="820" x2="960" y2="-120" stroke="#2a72c8" stroke-width="1.6"/>
+            <line x1="1720" y1="820" x2="960" y2="-120" stroke="#2a72c8" stroke-width="1.0"/>
+            <line x1="1490" y1="820" x2="960" y2="-120" stroke="#2a72c8" stroke-width=".65"/>
+            <line x1="1250" y1="820" x2="960" y2="-120" stroke="#2a72c8" stroke-width=".4"/>
           </g>
           <line x1="0" y1="130" x2="1920" y2="130" stroke="url(#bH)" stroke-width=".8" opacity=".3"/>
           <line x1="0" y1="290" x2="1920" y2="290" stroke="url(#bH)" stroke-width="1.4" opacity=".42"/>
@@ -194,11 +196,11 @@ html,body{width:100%;height:100%;overflow:hidden;background:#010810;touch-action
           <line x1="300" y1="333" x2="780" y2="333" stroke="url(#gH)" stroke-width="1.2" opacity=".5"/>
           <line x1="1140" y1="333" x2="1620" y2="333" stroke="url(#gH)" stroke-width="1.2" opacity=".5"/>
           <g opacity=".055">
-            <line x1="80" y1="0" x2="140" y2="720" stroke="#fff" stroke-width="1.8"/>
-            <line x1="430" y1="0" x2="490" y2="720" stroke="#fff" stroke-width="1.1"/>
-            <line x1="950" y1="0" x2="1010" y2="720" stroke="#fff" stroke-width="2.2"/>
-            <line x1="1420" y1="0" x2="1480" y2="720" stroke="#fff" stroke-width="1.1"/>
-            <line x1="1780" y1="0" x2="1840" y2="720" stroke="#fff" stroke-width="1.8"/>
+            <line x1="80" y1="0" x2="140" y2="820" stroke="#fff" stroke-width="1.8"/>
+            <line x1="430" y1="0" x2="490" y2="820" stroke="#fff" stroke-width="1.1"/>
+            <line x1="950" y1="0" x2="1010" y2="820" stroke="#fff" stroke-width="2.2"/>
+            <line x1="1420" y1="0" x2="1480" y2="820" stroke="#fff" stroke-width="1.1"/>
+            <line x1="1780" y1="0" x2="1840" y2="820" stroke="#fff" stroke-width="1.8"/>
           </g>
           <ellipse cx="960" cy="240" rx="500" ry="200" fill="none" stroke="#4ab5f5" stroke-width=".7" opacity=".07"/>
           <ellipse cx="960" cy="240" rx="720" ry="290" fill="none" stroke="#4ab5f5" stroke-width=".4" opacity=".04"/>
@@ -299,14 +301,23 @@ return '<div class="director '+(r.lead?'lead':'')+'">'
 +'<div class="nameplate"><div class="role-badge">'+r.role+'</div><br>'
 +'<div class="dir-name">'+r.name+'</div></div></div>';
 }).join('');
+var BANNER_W=1920,BANNER_H=820;
+var controlsTimer=null;
 function fit(){
 var vw=window.innerWidth,vh=window.innerHeight;
-var s=Math.min(vw/1920,vh/720);
+var s=Math.min(vw/BANNER_W,vh/BANNER_H);
 var sc=document.getElementById('scaler'),bw=document.getElementById('bw');
 bw.style.transform='scale('+s+')';bw.style.transformOrigin='top left';
-sc.style.width=(1920*s)+'px';sc.style.height=(720*s)+'px';
+sc.style.width=(BANNER_W*s)+'px';sc.style.height=(BANNER_H*s)+'px';
 }
 fit();window.addEventListener('resize',fit);
+function showBackButton(){
+document.body.classList.add('controls-visible');
+clearTimeout(controlsTimer);
+controlsTimer=setTimeout(function(){
+document.body.classList.remove('controls-visible');
+},3500);
+}
 function fullscreenElement(){
 return document.fullscreenElement||document.webkitFullscreenElement||document.msFullscreenElement;
 }
@@ -314,7 +325,7 @@ function requestFullscreen(el){
 var fn=el.requestFullscreen||el.webkitRequestFullscreen||el.msRequestFullscreen;
 if(!fn)return Promise.resolve();
 try{
-var result=fn.call(el);
+var result=fn.call(el,{navigationUI:'hide'});
 return result&&result.catch?result:Promise.resolve(result);
 }catch(e){return Promise.resolve();}
 }
@@ -333,6 +344,7 @@ setTimeout(fit,120);
 }
 function activateBanner(e){
 if(e&&e.cancelable)e.preventDefault();
+showBackButton();
 enterBannerFullscreen();
 }
 function bindActivation(el){
@@ -343,9 +355,13 @@ if(window.PointerEvent)el.addEventListener('pointerup',activateBanner);
 }
 bindActivation(document.querySelector('.rotate-overlay'));
 bindActivation(document.querySelector('.stage'));
+document.querySelector('.back-btn').addEventListener('click',function(e){e.stopPropagation();});
 window.addEventListener('orientationchange',function(){setTimeout(fit,250);});
 document.addEventListener('fullscreenchange',fit);
 document.addEventListener('webkitfullscreenchange',fit);
+document.addEventListener('keydown',function(e){
+if(e.key==='Enter'||e.key===' '||e.key==='F11')enterBannerFullscreen();
+});
 enterBannerFullscreen();
 </script>
 </body>
