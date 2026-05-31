@@ -28,6 +28,11 @@ html,body{background:#0c1018;font-family:'Barlow Condensed',sans-serif;color:#dd
   box-shadow:0 30px 80px -10px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.06);
   background:#000;}
 .bw{transform-origin:top left;width:1080px;height:1920px;}
+html.export-mode,html.export-mode body{width:1080px;height:1920px;overflow:hidden;background:#010810;}
+html.export-mode .back-btn,html.export-mode .label{display:none;}
+html.export-mode .page{padding:0;gap:0;}
+html.export-mode .stage{width:1080px;max-width:none;}
+html.export-mode .scaler{border-radius:0;box-shadow:none;}
 
 .banner{width:1080px;height:1920px;position:relative;overflow:hidden;background:#010810;}
 .bg-base{position:absolute;inset:0;background:radial-gradient(ellipse 90% 58% at 50% -6%,#1848ae 0%,#07215a 26%,#020d2a 54%,#010810 100%);}
@@ -129,6 +134,7 @@ pointer-events:none;z-index:1;}
 </head>
 <body>
 
+<script>if(new URLSearchParams(location.search).has('export'))document.documentElement.classList.add('export-mode');</script>
 <a class="back-btn" href="../">← Voltar</a>
 
 <div class="page">
